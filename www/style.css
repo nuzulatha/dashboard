@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/*================================================================
+  1. ROOT STYLES, BODY, ANIMATIONS
+=================================================================*/
+:root {
+  --primary-color: #4f46e5;
+  --primary-medium: #818cf8;
+  --primary-light: #eef2ff;
+  --success-gradient: linear-gradient(45deg, #10b981, #34d399);
+  --text-primary: #1f2937;
+  --text-white: #ffffff;
+}
+
+body, .h1, .h2, .h3, .h4, .h5, .h6, .main-header .logo, .box-title, .btn, .selectize-input {
+  font-family: 'Poppins', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.content-wrapper {
+  background: linear-gradient(320deg, #e0c3fc 0%, #8ec5fc 100%);
+  /* Memastikan tombol FAB bisa melayang dengan benar */
+  transform: none !important;
+}
+
+@keyframes shimmer { 0% { transform: translateX(-100%) skewX(-20deg); } 100% { transform: translateX(200%) skewX(-20deg); } }
+@keyframes iconBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes slideIn { from { width: 0; } to { width: 4px; } }
+
+/*================================================================
+  2. HEADER
+=================================================================*/
+.main-header { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07) !important; }
+.main-header .navbar { min-height: 65px; background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(229, 231, 235, 0.6); position: relative; overflow: hidden; }
+.main-header .navbar::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%239CA3AF" fill-opacity="0.07"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>'); z-index: -1; }
+.main-header .logo { color: var(--text-primary); font-weight: 700 !important; font-size: 24px !important; line-height: 65px; height: 65px; background-color: transparent !important; letter-spacing: -0.5px; transition: all 0.3s ease; }
+.main-header .logo:hover { transform: scale(1.05); text-shadow: 0 0 15px rgba(79, 70, 229, 0.4); color: var(--primary-color); }
+.main-header .sidebar-toggle { color: var(--text-primary) !important; line-height: 35px; }
+
+/*================================================================
+  3. SIDEBAR MENU
+=================================================================*/
+.main-sidebar { background-image: linear-gradient(180deg, #43447a 0%, #396394 100%); }
+.sidebar-menu>li { margin: 4px 10px; border-radius: 8px; transition: all 0.2s ease-in-out; position: relative; }
+.sidebar-menu>li>a { color: var(--text-white); font-weight: 500; padding: 12px 15px; }
+.sidebar-menu>li.active::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 60%; background-color: var(--text-white); border-radius: 0 4px 4px 0; animation: slideIn 0.3s ease forwards; }
+.sidebar-menu>li.active { background: rgba(255, 255, 255, 0.2); box-shadow: inset 0 0 10px rgba(255,255,255,0.1); }
+.sidebar-menu>li.active>a { font-weight: 600; }
+.sidebar-menu>li:hover:not(.active) { background-color: rgba(255, 255, 255, 0.1); }
+.sidebar-menu .treeview-menu { background-color: rgba(0,0,0,0.2) !important; padding-left: 15px; }
+
+/*================================================================
+  4. JUDUL KONTEN UTAMA
+=================================================================*/
+.content-wrapper h2 { font-size: 28px; font-weight: 700; color: var(--text-primary); background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(5px); padding: 20px 25px; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06); display: inline-block; transition: all 0.3s ease; }
+.content-wrapper h2:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08); color: var(--primary-color); }
+
+/*================================================================
+  5. BOXES (KOTAK KONTEN)
+=================================================================*/
+.box { border-radius: 12px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06); border: 1px solid rgba(255, 255, 255, 0.5); background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(5px); }
+
+/*================================================================
+  6. TOMBOL & INPUT
+=================================================================*/
+.btn-success, .btn-primary, .btn-info { border-radius: 8px; font-weight: 600; padding: 10px 18px; transition: all 0.3s ease; border: none; color: var(--text-white); box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+.btn-success:hover, .btn-primary:hover, .btn-info:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 7px 20px rgba(0,0,0,0.15); }
+.btn-success::after, .btn-primary::after, .btn-info::after { content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%); transform: translateX(-100%) skewX(-20deg); }
+.btn-success:hover::after, .btn-primary:hover::after, .btn-info:hover::after { animation: shimmer 0.8s ease; }
+.btn-primary { background: linear-gradient(45deg, #4f46e5, #818cf8); }
+.btn-success { background: var(--success-gradient); }
+.btn-default { border-radius: 8px; font-weight: 600; padding: 10px 18px; transition: all 0.3s ease; background-color: var(--primary-medium); color: var(--text-white); border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.btn-default:hover { background-color: var(--primary-color); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3); }
+.btn-default:hover .fa, .btn-default:hover .glyphicon { animation: iconBounce 0.5s ease; }
+.btn-fab { position: fixed !important; bottom: 25px; right: 25px; width: 60px !important; height: 60px !important; padding: 0 !important; border-radius: 50% !important; font-size: 0 !important; box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important; display: flex; align-items: center; justify-content: center; z-index: 1000; }
+.btn-fab .fa, .btn-fab .glyphicon { font-size: 24px; line-height: 1; }
+.btn-fab:hover .fa, .btn-fab:hover .glyphicon { animation: none; transform: rotate(15deg); }
+
+/*================================================================
+  7. CUSTOM OVERRIDES & FIXES
+=================================================================*/
+#shiny-tab-uji_prop_ragam .btn-primary { background: var(--success-gradient) !important; }
+.btn-info { background: var(--primary-medium) !important; }
+.btn-info:hover { background: var(--primary-color) !important; }
+
+/* === [INI DIA PERBAIKANNYA] Menargetkan tombol unduh yang kelasnya hanya 'btn-sm btn-block' === */
+.box .btn-sm.btn-block:not(.btn-default):not(.btn-info):not(.btn-success):not(.btn-primary) {
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 10px 18px;
+  transition: all 0.3s ease;
+  background-color: var(--primary-medium);
+  color: var(--text-white);
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.box .btn-sm.btn-block:not(.btn-default):not(.btn-info):not(.btn-success):not(.btn-primary):hover {
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+.box .btn-sm.btn-block:not(.btn-default):not(.btn-info):not(.btn-success):not(.btn-primary):hover .fa,
+.box .btn-sm.btn-block:not(.btn-default):not(.btn-info):not(.btn-success):not(.btn-primary):hover .glyphicon {
+  animation: iconBounce 0.5s ease;
+}
+
+/* Gaya dasar untuk semua kotak sorotan (valueBox) */
+.small-box {
+  border-radius: 15px !important; /* Membuat sudut lebih bulat */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border: none;
+  overflow: hidden; /* Penting untuk gradasi */
+  transition: all 0.3s ease-in-out; /* Transisi untuk efek interaktif */
+}
+
+/* Efek interaktif saat kursor diarahkan */
+.small-box:hover {
+  transform: translateY(-5px) scale(1.03); /* Sedikit terangkat dan membesar */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Membuat ikon di dalam kotak lebih hidup saat di-hover */
+.small-box:hover .icon-large {
+  transform: scale(1.15);
+  opacity: 0.5;
+}
+
+.small-box .icon-large {
+  transition: all 0.3s ease-in-out;
+  opacity: 0.2;
+}
+
+
+/* Kustomisasi Gradasi Warna per Kotak */
+/* Kotak ungu (diganti dari .bg-aqua atau default) */
+.small-box.bg-aqua, .bg-purple {
+  background: linear-gradient(135deg, #6b21a8 0%, #a855f7 100%) !important;
+}
+
+/* Kotak oranye (diganti dari .bg-yellow) */
+.small-box.bg-yellow, .bg-orange {
+  background: linear-gradient(135deg, #f97316 0%, #fbbf24 100%) !important;
+}
+
+/* Kotak hijau (diganti dari .bg-green) */
+.small-box.bg-green {
+  background: linear-gradient(135deg, #047857 0%, #34d399 100%) !important;
+}
+
+/* 1. Membuat font judul "SOVI-Dash" menjadi gradasi warna TERANG & KEREN */
+.main-header .logo {
+  /* Gradasi dari Cyan terang ke Pink cerah agar kontras */
+  background: -webkit-linear-gradient(45deg, #22d3ee, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800 !important;
+}
+
+/* Paksa versi besar dari logo (yang berisi tulisan "SOVI-Dash") untuk TAMPIL */
+.sidebar-collapse .main-header .logo .logo-lg {
+  display: block !important; /* Ini adalah kunci untuk membuatnya terlihat */
+  color: linear-gradient(135deg, #ebff33, #f1f3f3) !important; /* Ubah warna teks menjadi PUTIH agar kontras */
+  
+  /* Baris-baris ini untuk membatalkan efek gradasi pada teks
+     dan memastikan warnanya solid putih */
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+}
+/* Pastikan saat kursor diarahkan ke logo mini, warnanya tetap serasi 
+  dan tidak kembali menjadi hitam.
+*/
+.sidebar-collapse .main-header .logo:hover {
+  /* Gradasi dibuat sedikit lebih gelap untuk efek hover */
+  background: linear-gradient(135deg, #00609a, #00a0c4) !important;
+}
