@@ -22,6 +22,7 @@ library(webshot2)
 library(broom)
 library(spdep)
 library(sp)
+library(rsconnect)
 
 #==============================================================================
 #                             USER INTERFACE (UI)
